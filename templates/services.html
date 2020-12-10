@@ -1,0 +1,19 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<div class="jumbotron">
+
+    <h1>Service Page</h1>
+    <p>Fill out the form</p>
+    <form action="{{url_for('submitted')}}">
+        <label for="info_1">Info 1</label>
+        <input type="text" name="info_1">
+        <label for="info_2">Info 2</label>
+        <input type="text" name="info_2">
+        <input type="submit" value="Submit Form">
+    </form>
+
+</div>
+
+{% endblock %}
