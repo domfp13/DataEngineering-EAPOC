@@ -12,3 +12,8 @@ $ docker image build -t webapp .
 $ docker container run --detach --publish 8080:80 --name my_app -e PORT=80 webapp
 $ curl http://localhost:8080/
 ```
+### Python env
+```sh
+$ C:/Users/lf188653/AppData/Local/Continuum/anaconda3/Scripts/activate
+$ conda activate EAPOC
+```

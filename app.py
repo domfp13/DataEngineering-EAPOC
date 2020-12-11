@@ -29,4 +29,4 @@ def page_not_found(e):
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=int(environ.get('PORT', 8080)))
-    #app.run(debug=True, host='0.0.0.0') -- run without container
+    #app.run(debug=True, host='0.0.0.0', port=8080) # run without container
