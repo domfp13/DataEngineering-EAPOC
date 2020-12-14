@@ -2,17 +2,22 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Home Page</h1>
+<h1>Home Page!</h1>
 
-<!-- <p>This is some logic here: </p>
+<!-- <ul>
+    {% for employee in number_list %}
+    <li>{{ employee.name }}</li>
+    <li>{{ employee.last_name }}</li>
+    <li>{{ employee.title }}</li>
+    {% endfor %}
+</ul> -->
+
 <ul>
-    {% for number in number_list%}
-    {% if number == 1 %}
-        <li>{{ number }}</li>
-    {% endif %}
+    {% for number in number_list %}
+    <li>{{ number }}</li>
     {% endfor %}
 </ul>
-<p>Here is an image</p>
-<img src="../static/compucom.png"> -->
+
+<!-- <img src="../static/compucom.png"> -->
 
 {% endblock %}

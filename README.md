@@ -9,7 +9,8 @@ DataEngineering-EAPOC is a POC (proof of concept) of an Enterprise Architecture 
 ```sh
 $ cd DataEngineering-EAPOC
 $ docker image build -t webapp .
-$ docker container run --detach --publish 8080:80 --name my_app -e PORT=80 webapp
+$ docker container run -d -p 8080:80 --name my_app -e PORT=80 webapp
+$ docker container run -d -p 8080:80 --name my_app -e PORT=80 -v "%cd%":/webapp webapp
 $ curl http://localhost:8080/
 ```
 ### Python env

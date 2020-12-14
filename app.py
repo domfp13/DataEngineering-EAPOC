@@ -1,14 +1,19 @@
+# !/usr/bin/env python
 # -*- coding: utf-8 -*-
-#!/usr/bin/env python
-# Luis Enrique Fuentes Plata
+
+# Copyright (c) CompuCom, All Rights Reserved
 
 from flask import Flask, render_template, request
+#from ptest.DataHandler import DataLoader
+from os import environ
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    my_name = "Enrique Plata"
+    #my_name = "Enrique Plata"
+    #data_loader = DataLoader()
+    #number_list = data_loader.get_employee()
     number_list = [1,2,3]
     return render_template("index.html", number_list=number_list)
 
