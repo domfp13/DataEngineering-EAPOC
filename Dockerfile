@@ -10,7 +10,7 @@ WORKDIR $APP_HOME
 COPY . ./
 
 #RUN pip install Flask gunicorn 
-RUN pip install Flask gunicorn snowflake-sqlalchemy
+RUN pip install Flask gunicorn flask-wtf snowflake-sqlalchemy
 
 # Running
 CMD exec gunicorn --bind :$PORT app:app
