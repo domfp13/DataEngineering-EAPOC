@@ -3,9 +3,11 @@
 
 # Copyright (c) CompuCom, All Rights Reserved
 
-from DataHandler import DataLoader
+from Snowflake import DataLoader
+from GenericFunctions import getCredentials
 
 if __name__ == "__main__":
     
-    data_loader = DataLoader()
-    print(data_loader.get_employee())
+    data_loader = DataLoader(getCredentials())
+    for element in data_loader.get_technology_stack():
+        print(element)

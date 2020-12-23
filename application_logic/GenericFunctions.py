@@ -26,3 +26,18 @@ def getCredentials()->dict:
             'warehouse_name':'', 
             'role_name':''
             }
+
+def decorator_get_secrect_key(function):
+    def wrapper():
+        from os import environ
+        return environ.get('SECRET_KEY')
+    return wrapper
+#@decorator_get_secrect_key
+def get_secret_key()->str:
+    """This function grabs the secret key for the application configuration using a decorator, 
+       for local testing deactivate the decorator since it is using an environmental value passed to the container at creation time.
+
+    Returns:
+        str: [This will be a secret key in form of string]
+    """
+    return 'dynamoDB@'

@@ -1,15 +1,16 @@
-
 {% extends "base.html" %}
 {% block content %}
 
 <div class="jumbotron">
-
-    <h1>Info submitted</h1>
+    <h1>Values submitted:</h1>
     <ul>
-        <li>{{ info_1 }}</li>
-        <li>{{ info_2 }}</li>
+      {% for key in session.keys() %}
+        {% if key != 'csrf_token' %}
+          <li>{{session[key]}}</li>
+        {% endif %}
+      {% endfor %}
     </ul>
-
 </div>
 
 {% endblock %}
+
