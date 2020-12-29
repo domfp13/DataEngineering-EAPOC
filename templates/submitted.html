@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="jumbotron">
-    <h1>Values submitted:</h1>
+<div class="container">
+  <div class="jumbotron">
+    <h3>Values submitted:</h3>
     <ul>
       {% for key in session.keys() %}
         {% if key != 'csrf_token' %}
@@ -10,6 +11,7 @@
         {% endif %}
       {% endfor %}
     </ul>
+  </div>
 </div>
 
 {% endblock %}

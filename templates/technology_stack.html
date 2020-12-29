@@ -1,20 +1,26 @@
+{% from "_render_field.html" import render_field %}
 {% extends "base.html" %}
 {% block content %}
 
-<div class="jumbotron">
-
-    <h1>Technology Stack</h1>
-    
-    <form method="POST">
-        {# This hidden_tag is a CSRF security feature. #}
-        {{form.hidden_tag()}}
-        {{form.technology_stack_name.label}} {{form.technology_stack_name}}
-        <br>
-        {{form.technology_capability_id.label}} {{form.technology_capability_id}}
-        <br>
-        {{form.submit()}}
-    </form>
-
+<div class="container theme-showcase" role="main">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="well bs-component">
+          <form class="form-horizontal", method="POST">
+            {{form.hidden_tag()}}
+            <fieldset>
+              <legend>Technology Stack</legend>
+              {{ render_field(form.technology_stack_name, placeholder=form.technology_stack_name.label.text) }}
+              {{ render_field(form.technology_capability_id)}}
+              <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
 </div>
 
 {% endblock %}

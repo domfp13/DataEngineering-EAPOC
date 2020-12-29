@@ -4,17 +4,27 @@ DataEngineering-EAPOC is a POC (proof of concept) of an Enterprise Architecture 
 * Functional Services: These IT services provide business functions and should be aligned to the capabilities centers need.
 * Core Services: Tools used by IT to support business functional systems, experience systems, perform system integration, data governance and management, analytics, automation  and finally CI/CD
 
-### Local Testing
+### 1.- Local Testing
 
 ```sh
 $ cd DataEngineering-EAPOC
 $ docker image build -t webapp .
-$ docker container run -d -p 8080:80 --name my_app -e PORT=80 webapp
-$ docker container run -d -p 8080:80 --name my_app -e PORT=80 -v "%cd%":/webapp webapp
+$ docker container run -d -p 8080:80 --name my_app -e PORT=80 webapp:latest
+$ docker container run -d -p 8080:80 --name my_app -e PORT=80 -v "%cd%":/app webapp:latest
+$ docker container run -d -p 8080:80 --name my_app -e PORT=80 -v $(pwd):/app webapp:latest
 $ curl http://localhost:8080/
 ```
-### Python env
+
+#### 1.1.- Virtual ENV
 ```sh
 $ C:/Users/lf188653/AppData/Local/Continuum/anaconda3/Scripts/activate
 $ conda activate EAPOC
+```
+
+### 2.- GCP Cloud Run [Build & Deploy]
+```sh
+$ gcloud builds submit --tag gcr.io/microstrategyit/eapoc
+$ gcloud run deploy --image gcr.io/microstrategyit/eapoc --platform managed
+$ Name: eapoc-website
+$ Region: us-central1
 ```
