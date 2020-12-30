@@ -2,16 +2,54 @@
 {% block content %}
 
 <div class="container">
-    <h1>Home Page</h1>
+    
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+          <h1 class="display-4 font-weight-normal">EA Modeling</h1>
+          <p class="lead font-weight-normal text-left">
+            This is a PoC for a full data model for applications across the enterprise, 
+            the idea is to support the business capability information management which 
+            is part of the information technology. Having a data model capable of materializing
+            the relationship between the different levels of business capabilities all the way 
+            to technology stack in a way of a network or tree dashboards.
+          </p>
+          <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+        </div>
+        <div class="product-device shadow-sm d-none d-md-block"></div>
+        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+    </div>
 
-    <ul>
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+
+        <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+          <div class="my-3 py-3">
+            <h2 class="display-5">Application Architecture</h2>
+            <p class="lead">Microservices-Containers: This architecture offers flexibility in using technologies and scalability</p>
+            <img src="../static/containers.png" style="width:600px;height:400px;">
+          </div>
+          <div class="bg-light shadow-sm mx-auto" style="width: 20%; height: 50px; border-radius: 21px 21px 0 0;"></div>
+        </div>
+    
+    <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+          <div class="my-3 p-3">
+            <h2 class="display-5">Data Model Diagram</h2>
+            <p class="lead">Logical representation of the Data Model</p>
+            <img src="../static/db.png" alt="200" class="img-thumbnail">
+          </div>
+          <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+        </div>
+    </div>
+
+    <!-- <ul>
         {% for number in number_list %}
         <li>{{ number }}</li>
         {% endfor %}
-    </ul>
+    </ul> -->
+
+    <!-- <img src="../static/compucom.png"> -->
 
 </div>
 
-<!-- <img src="../static/compucom.png"> -->
+
 
 {% endblock %}
