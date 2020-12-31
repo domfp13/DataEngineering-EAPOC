@@ -5,14 +5,14 @@
   <div class="jumbotron">
     <h3>Values submitted:</h3>
     <ul>
+      {{session}}
       {% for key in session.keys() %}
-        {% if key != 'csrf_token' %}
-          <li>{{session[key]}}</li>
-        {% endif %}
+      {% if key != 'csrf_token' %}
+      <li>{{session[key]}}</li>
+      {% endif %}
       {% endfor %}
     </ul>
   </div>
 </div>
 
 {% endblock %}
-

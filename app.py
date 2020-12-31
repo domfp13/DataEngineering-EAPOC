@@ -6,15 +6,13 @@
 from flask import (Flask, render_template, session, redirect, url_for, request)
 from os import environ
 from application_logic.Forms import TechnologyStack
-from application_logic.GenericFunctions import get_secret_key, getCredentials
+from application_logic.GenericFunctions import get_secret_key
 #from application_logic.Datamodel import DataLoader
 
 app = Flask(__name__)
 
 # Change this for an env virable
 app.config['SECRET_KEY'] = get_secret_key()
-
-#dataloader = DataLoader(getCredentials())
 
 @app.route("/")
 def index():

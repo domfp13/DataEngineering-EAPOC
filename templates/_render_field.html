@@ -4,9 +4,9 @@
     <div class="col-lg-10">
         {{ field(class_='form-control', **kwargs)|safe }}
         <ul>
-        {% for error in field.errors %}
+            {% for error in field.errors %}
             <li style="color:red;">{{ error }}</li>
-        {% endfor %}
+            {% endfor %}
         </ul>
     </div>
 </div>

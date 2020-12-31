@@ -18,6 +18,14 @@ class TechnologyStackModel:
     def __repr__(self):
         return f'{self.technology_stack_id}, {self.technology_stack_name}, {self.technology_capability_id}'
 
+class TechnologyCapability:
+    def __init__(self, technology_capability_id:int, technology_capability_name:str):
+        self.technology_capability_id = technology_capability_id
+        self.technology_capability_name = technology_capability_name
+    
+    def transform(self):
+        return (self.technology_capability_id, self.technology_capability_name)
+
 class DataLoader:
 
     def __init__(self, registry:dict):
@@ -46,3 +54,6 @@ class DataLoader:
     
     def get_technology_stack(self):
         return [TechnologyStackModel(*row).transform() for row in self.__load_data_from_database('SELECT * FROM TECHNOLOGY_STACK')]
+
+    def get_technology_capability(self):
+        return [TechnologyCapability(*row).transform() for row in self.__load_data_from_database('SELECT * FROM TECHNOLOGY_CAPABILITY')]
