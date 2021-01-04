@@ -52,8 +52,22 @@ class DataLoader:
             connection.close()
             #self.__engine.dispose()
     
+    def __put_data_to_database(self, query):
+        try:
+            connection = self.__engine.connect()
+            connection.execute(query)
+            connection.execute("COMMIT")
+        except Exception as e:
+            print(e)
+        finally:
+            connection.close()
+    
     def get_technology_stack(self):
         return [TechnologyStackModel(*row).transform() for row in self.__load_data_from_database('SELECT * FROM TECHNOLOGY_STACK')]
+
+    def put_technology_stack(self, **kargs)->None:
+        query = "CALL SPW_INSERT_TECHNOLOGY_STACK('{technology_stack_name}', {technology_capability_id})".format(technology_stack_name=kargs.get('tsn'), technology_capability_id=kargs.get('tci'))
+        self.__put_data_to_database(query)
 
     def get_technology_capability(self):
         return [TechnologyCapability(*row).transform() for row in self.__load_data_from_database('SELECT * FROM TECHNOLOGY_CAPABILITY')]

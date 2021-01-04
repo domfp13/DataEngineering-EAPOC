@@ -30,6 +30,8 @@ def technology_stack():
         session['technology_stack_name'] = form.technology_stack_name.data
         session['technology_capability_id'] = form.technology_capability_id.data
 
+        form.insert_data()
+
         return redirect(url_for('submitted'))
     
     return render_template('technology_stack.html', form=form)

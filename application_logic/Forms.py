@@ -24,4 +24,8 @@ class TechnologyStack(FlaskForm):
     technology_stack_name = StringField('Technology Stack Name:', validators=[DataRequired()])
     #technology_capability_id = SelectField(u'Technology Capability:', choices=capability_obj.get_list())
     technology_capability_id = SelectField(u'Technology Capability:', choices=data_loader.get_technology_capability())
-    
+
+    def insert_data(self)->None:
+        values = {'tsn':self.technology_stack_name.data, 'tci':self.technology_capability_id.data}
+        # print(values)
+        self.data_loader.put_technology_stack(**values)

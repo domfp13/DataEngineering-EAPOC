@@ -18,14 +18,14 @@ def getCredentials()->dict:
         (str)
     """
     return {
-        'user':'', 
-        'password':'', 
-        'account':'', 
-        'database_name':'', 
-        'schema_name':'', 
-        'warehouse_name':'', 
-        'role_name':''
-        }
+    'user':'', 
+    'password':'', 
+    'account':'', 
+    'database_name':'', 
+    'schema_name':'', 
+    'warehouse_name':'', 
+    'role_name':''
+    }
 
 def decorator_get_secrect_key(function):
     def wrapper():
