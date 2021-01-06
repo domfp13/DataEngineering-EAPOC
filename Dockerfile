@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) CompuCom, All Rights Reserved
+# Created by Luis Fuentes
 
 # Python image to use.
 FROM python:3.7-slim
@@ -17,8 +18,6 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 # Copy the rest of the working directory contents into the container at /app 
 WORKDIR $APP_HOME
 COPY . .
-
-#RUN pip install Flask gunicorn flask-wtf snowflake-sqlalchemy
 
 # Run app.py when the container launches
 CMD exec gunicorn --bind :$PORT app:app

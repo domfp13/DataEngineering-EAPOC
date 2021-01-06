@@ -2,6 +2,31 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!-- This is the table that is showing the TECHNOLOGY_STACK Table -->
+<div class="container theme-showcase" role="main">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">{{headers[0]}}</th>
+        <th scope="col">{{headers[1]}}</th>
+        <th scope="col">{{headers[2]}}</th>
+        <th scope="col">{{headers[3]}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for element in data %}
+        <tr>
+          <th scope="row">{{ loop.index0 }}</th>
+          {%  for x in element %}
+            <td>{{x}}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table> 
+</div>
+
+<!-- This is the form that is about to be submitted -->
 <div class="container theme-showcase" role="main">
   <div class="row">
     <div class="col-lg-12">

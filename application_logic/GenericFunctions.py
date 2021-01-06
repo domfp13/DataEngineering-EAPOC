@@ -1,14 +1,23 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
+# Created by Luis Fuentes
 
 # Copyright (c) CompuCom, All Rights Reserved
 
 def decoratorGetCredentials(function):
     def wrapper():
         from os import environ
-        return environ.get('USERNAME')
+        return {
+            'user':environ.get('USER'), 
+            'password':environ.get('PASSWORD'), 
+            'account':environ.get('ACCOUNT'), 
+            'database_name':environ.get('DATABASENAME'), 
+            'schema_name':environ.get('SCHEMANAME'), 
+            'warehouse_name':environ.get('WAREHOUSENAME'), 
+            'role_name':environ.get('ROLENAME')
+        }
     return wrapper
-#@decoratorGetUserName
+@decoratorGetCredentials
 def getCredentials()->dict:
     """This is a decorator function, it is use in dev to pass the hardcoded credentials in order to connect to Snowflake
     

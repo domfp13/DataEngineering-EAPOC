@@ -6,8 +6,8 @@
 from flask import (Flask, render_template, session, redirect, url_for, request)
 from os import environ
 from application_logic.Forms import TechnologyStack
-from application_logic.GenericFunctions import get_secret_key
-#from application_logic.Datamodel import DataLoader
+from application_logic.GenericFunctions import get_secret_key, getCredentials
+from application_logic.Datamodel import DataLoader
 
 app = Flask(__name__)
 
@@ -22,8 +22,11 @@ def index():
 
 @app.route("/technology_stack", methods=['GET','POST'])
 def technology_stack():
+
+    headers = ['Row', 'Technology Stack ID', 'Technology Stack Name', 'Technology Capability ID']
     
     form = TechnologyStack()
+    data = DataLoader(getCredentials()).get_technology_stack()
 
     if form.validate_on_submit():
         
@@ -34,7 +37,14 @@ def technology_stack():
 
         return redirect(url_for('submitted'))
     
-    return render_template('technology_stack.html', form=form)
+    return render_template('technology_stack.html', form=form, headers=headers, data=data)
+
+@app.route("/technology_capability", methods=['GET','POST'])
+def technology_capability():
+    """
+    TO DO
+    """
+    pass
 
 @app.route('/submitted')
 def submitted():

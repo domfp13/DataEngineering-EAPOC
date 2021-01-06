@@ -1,4 +1,5 @@
 -- -*- coding: utf-8 -*-
+-- This is the database model
 -- Created by Luis Enrique Fuentes Plata
 
 USE UDC;
@@ -110,8 +111,9 @@ $$
 
 CALL SPW_INSERT_TECHNOLOGY_STACK('Python', 1);
 
-SELECT * FROM TECHNOLOGY_CAPABILITY
-SELECT * FROM TECHNOLOGY_STACK
+-- Selecting some of the data from the db
+SELECT * FROM TECHNOLOGY_CAPABILITY;
+SELECT * FROM TECHNOLOGY_STACK;
 
 -- 4.- Dashboard PowerBi
 SELECT s.technology_stack_name,
