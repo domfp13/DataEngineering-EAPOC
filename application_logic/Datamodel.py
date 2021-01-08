@@ -63,6 +63,9 @@ class DataLoader:
         finally:
             connection.close()
     
+    def get_stack_cap(self):
+        return [TechnologyStackModel(*row).transform() for row in self.__load_data_from_database('SELECT * FROM V_STACK_CAP')]
+
     def get_technology_stack(self):
         return [TechnologyStackModel(*row).transform() for row in self.__load_data_from_database('SELECT * FROM TECHNOLOGY_STACK')]
 

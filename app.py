@@ -26,7 +26,8 @@ def technology_stack():
     headers = ['Row', 'Technology Stack ID', 'Technology Stack Name', 'Technology Capability ID']
     
     form = TechnologyStack()
-    data = DataLoader(getCredentials()).get_technology_stack()
+    #data = DataLoader(getCredentials()).get_technology_stack()
+    data = DataLoader(getCredentials()).get_stack_cap()
 
     if form.validate_on_submit():
         
