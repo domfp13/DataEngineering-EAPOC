@@ -1,32 +1,21 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Created by Luis Fuentes
+# Created by Luis Enrique Fuentes Plata
 
-# Copyright (c) CompuCom, All Rights Reserved
 from flask_wtf import FlaskForm
 from wtforms import StringField, SelectField, TextField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired
 from application_logic.Datamodel import DataLoader
-from application_logic.GenericFunctions import getCredentials
-
-# This can be a connection to Snowflake
-class Capability:
-
-    def __init__(self, tuple_list:list):
-        self.tuple_list = tuple_list
-    
-    def get_list(self):
-        return self.tuple_list
 
 class TechnologyStack(FlaskForm):
 
-    #capability_obj = Capability([(1,'Backend'),(2,'Infrastructure'),(3,'Data'),(4,'Other')])
-    data_loader = DataLoader(getCredentials())
+    data_loader = DataLoader()
     technology_stack_name = StringField('Technology Stack Name:', validators=[DataRequired()])
-    #technology_capability_id = SelectField(u'Technology Capability:', choices=capability_obj.get_list())
     technology_capability_id = SelectField(u'Technology Capability:', choices=data_loader.get_technology_capability())
 
     def insert_data(self)->None:
-        values = {'tsn':self.technology_stack_name.data, 'tci':self.technology_capability_id.data}
-        # print(values)
-        self.data_loader.put_technology_stack(**values)
+        """This method uses and instance of application_logic.DataLoader and calls the insert_data_into_stack method
+        """
+        query = "INSERT INTO webapp.technology_stack (technology_stack_name, technology_capability_id) VALUES (%s, %s)"
+        values = (self.technology_stack_name.data, self.technology_capability_id.data)
+        TechnologyStack.data_loader.insert_data_into_stack(query, values)

@@ -1,24 +1,18 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Created by Luis Fuentes
+# Created by Luis Enrique Fuentes Plata
 
-# Copyright (c) CompuCom, All Rights Reserved
-
-def decoratorGetCredentials(function):
+def decorator_get_db_credentials(function):
     def wrapper():
         from os import environ
         return {
-            'user':environ.get('USER'), 
-            'password':environ.get('PASSWORD'), 
-            'account':environ.get('ACCOUNT'), 
-            'database_name':environ.get('DATABASENAME'), 
-            'schema_name':environ.get('SCHEMANAME'), 
-            'warehouse_name':environ.get('WAREHOUSENAME'), 
-            'role_name':environ.get('ROLENAME')
+            'POSTGRES_USER':environ.get('POSTGRES_USER'), 
+            'POSTGRES_PASSWORD':environ.get('POSTGRES_PASSWORD'), 
+            'POSTGRES_DB':environ.get('POSTGRES_DB')
         }
     return wrapper
-@decoratorGetCredentials
-def getCredentials()->dict:
+@decorator_get_db_credentials
+def get_db_credentials()->dict:
     """This is a decorator function, it is use in dev to pass the hardcoded credentials in order to connect to Snowflake
     
     Arguments:
@@ -27,13 +21,9 @@ def getCredentials()->dict:
         (str)
     """
     return {
-    'user':'', 
-    'password':'', 
-    'account':'', 
-    'database_name':'', 
-    'schema_name':'', 
-    'warehouse_name':'', 
-    'role_name':''
+        'POSTGRES_USER': "", 
+        'POSTGRES_PASSWORD':"", 
+        'POSTGRES_DB':""
     }
 
 def decorator_get_secrect_key(function):

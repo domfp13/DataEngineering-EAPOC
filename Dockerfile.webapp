@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) CompuCom, All Rights Reserved
-# Created by Luis Fuentes
+# Created by Luis Enrique Fuentes Plata
 
 # Python image to use.
-FROM python:3.7-slim
+FROM python:3.7
 
 # Set the working directory to /app
 ENV APP_HOME /app
