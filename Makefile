@@ -16,7 +16,9 @@ compose:
 	docker-compose up
 
 .PHONY: setup
-setup: create-webapp compose
+setup: ## Creates and integrates all the services
+	@ $(MAKE) create-webapp
+	@ $(MAKE) compose
 
 .PHONY: run-snowflake
 run-snowflake:
@@ -44,7 +46,7 @@ dev:
       	-e POSTGRES_DB=stage \
 		webapp:latest
 
-help: ## display this help message
+help:
 	@ echo "Please use \`make <target>' where <target> is one of"
 	@ perl -nle'print $& if m{^[a-zA-Z_-]+:.*?## .*$$}' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m  %-25s\033[0m %s\n", $$1, $$2}'
 
