@@ -20,6 +20,10 @@ setup: ## Creates and integrates all the services
 	@ $(MAKE) create-webapp
 	@ $(MAKE) compose
 
+.PHONY: clean
+clean: ## Removes running containers
+	@ docker-compose down -v --rmi all
+
 .PHONY: run-snowflake
 run-snowflake:
 	@ echo "Building docker container"
@@ -51,3 +55,4 @@ help:
 	@ perl -nle'print $& if m{^[a-zA-Z_-]+:.*?## .*$$}' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m  %-25s\033[0m %s\n", $$1, $$2}'
 
 .DEFAULT_GOAL := help
+
